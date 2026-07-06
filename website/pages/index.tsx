@@ -4,12 +4,10 @@ import { Logo } from '@/components/icons';
 import { PreviewVideo } from '@/components/moves/animations/preview-video';
 import { FightcoreCard } from '@/components/ui/fightcore-card';
 import { ShowCaseMoves } from '@/config/showcase-data';
-import { siteConfig } from '@/config/site';
 import { moveRoute } from '@/utilities/routes';
-import { Alert, Button, Chip, InputGroup, Kbd } from '@heroui/react';
+import { Button, Chip, InputGroup, Kbd } from '@heroui/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { FaXmark } from 'react-icons/fa6';
 
 const DISMISS_KEY = 'fightcore-v2-banner-dismissed';
 
@@ -30,38 +28,6 @@ export default function Home() {
   return (
     <>
       <IndexHead />
-      {showBanner && (
-        <Alert color="primary" className="rounded-none border-x-0 border-t-0">
-          <Alert.Indicator />
-          <Alert.Content>
-            <Alert.Title className="w-full">
-              <span className="flex w-full justify-between">
-                <span>Welcome to Fightcore 2.0!</span>
-                <Button isIconOnly size="sm" variant="outline" onPress={dismissBanner} aria-label="Close">
-                  <FaXmark size={14} />
-                </Button>
-              </span>
-            </Alert.Title>
-            <Alert.Description>
-              <div>
-                We've reworked nearly the entire website and are working on much more. We'd love to hear your feedback.
-              </div>
-              <span>
-                If you have any thoughts, please{' '}
-                <a
-                  href={siteConfig.links.discord}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium underline"
-                >
-                  let us know on our Discord.
-                </a>{' '}
-                Or reach me directly on Discord at <code>bortthebeaver</code>
-              </span>
-            </Alert.Description>
-          </Alert.Content>
-        </Alert>
-      )}
       <HeroSection />
     </>
   );
@@ -148,7 +114,7 @@ function HeroSection() {
                 </FightcoreCard.Header>
                 <FightcoreCard.Body>
                   <PreviewVideo move={move} character={move.character!} lazy={false}></PreviewVideo>
-                  <div className="grap-3 flex flex-row justify-between">
+                  <div className="flex flex-row justify-between gap-3 pt-3">
                     <div>
                       <div className="text-muted text-xs">First active</div>
                       <div className="px-1 font-mono text-sm">{move.start}</div>

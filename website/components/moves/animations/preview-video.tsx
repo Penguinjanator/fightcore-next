@@ -8,12 +8,12 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FaCircleQuestion, FaExpand, FaXmark } from 'react-icons/fa6';
 
+import { createEvent } from '@/utilities/create-event';
 import { AnimationDisplay } from './animation-display';
 import { AnimationLegendContent } from './animation-legend';
 import { AnimationPlayerProvider } from './animation-player-context';
 import { AnimationPlayerControls } from './animation-player-controls';
 import { AnimationCredit } from './controls/animation-credit';
-import { createEvent } from '@/utilities/create-event';
 
 export interface PreviewVideoParams {
   move: Move;
@@ -106,7 +106,9 @@ export function PreviewVideo(params: Readonly<PreviewVideoParams>) {
       );
     }
 
-    return <video className="w-full" muted playsInline autoPlay loop src={params.move.webmUrl} suppressHydrationWarning />;
+    return (
+      <video className="w-full" muted playsInline autoPlay loop src={params.move.webmUrl} suppressHydrationWarning />
+    );
   };
 
   return (
@@ -127,19 +129,23 @@ export function PreviewVideo(params: Readonly<PreviewVideoParams>) {
             </div>
           </div>
         </div>
-        <Popover.Root>
-          <Popover.Trigger>
-            <button
-              aria-label="Hitbox legend"
-              className="absolute right-1 bottom-1 cursor-pointer rounded-full bg-black/50 p-1 text-white/80 backdrop-blur-sm transition-colors hover:bg-black/70 hover:text-white"
-            >
-              <FaCircleQuestion size={16} />
-            </button>
-          </Popover.Trigger>
-          <Popover.Content className="max-w-md p-4" placement="right">
-            <AnimationLegendContent />
-          </Popover.Content>
-        </Popover.Root>
+        <div className="flex flex-row">
+          {params.move.animationCredit && <AnimationCredit credit={params.move.animationCredit}></AnimationCredit>}
+
+          <Popover.Root>
+            <Popover.Trigger>
+              <button
+                aria-label="Hitbox legend"
+                className="absolute right-1 bottom-1 cursor-pointer rounded-full bg-black/50 p-1 text-white/80 backdrop-blur-sm transition-colors hover:bg-black/70 hover:text-white"
+              >
+                <FaCircleQuestion size={16} />
+              </button>
+            </Popover.Trigger>
+            <Popover.Content className="max-w-md p-4" placement="right">
+              <AnimationLegendContent />
+            </Popover.Content>
+          </Popover.Root>
+        </div>
       </div>
 
       <Lightbox move={params.move} character={params.character} isOpen={isOpen} onClose={() => setIsOpen(false)} />
