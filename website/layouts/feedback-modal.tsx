@@ -1,21 +1,18 @@
 'use client';
 
 import { Button, Form, Input, Label, Modal, TextArea, TextField } from '@heroui/react';
-import { useState } from 'react';
-import { FaComment } from 'react-icons/fa6';
+import { ReactNode, useState } from 'react';
 
-export const FeedbackModal = () => {
+interface SlotProps {
+  children: ReactNode;
+}
+
+export const FeedbackModal = ({ children }: SlotProps) => {
   const [loading, setLoading] = useState(false);
   return (
     <Modal>
-      <Button
-        isIconOnly
-        aria-label="Give feedback"
-        className={'cursor-pointer px-px transition-opacity hover:opacity-80'}
-        variant="ghost"
-      >
-        <FaComment />
-      </Button>
+      {children}
+
       <Modal.Backdrop>
         <Modal.Container>
           <Modal.Dialog className="sm:max-w-90">

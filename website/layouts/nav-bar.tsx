@@ -7,7 +7,7 @@ import { siteConfig } from '@/config/site';
 import { FeedbackModal } from '@/layouts/feedback-modal';
 import { VERSION_NUMBER } from '@/layouts/version-number';
 import { characterRoute } from '@/utilities/routes';
-import { Tooltip } from '@heroui/react';
+import { Button, Modal, Tooltip } from '@heroui/react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import React, { useEffect } from 'react';
@@ -16,6 +16,7 @@ import {
   FaBars,
   FaCalculator,
   FaCircleUser,
+  FaComment,
   FaDiscord,
   FaGithub,
   FaGoogleDrive,
@@ -77,7 +78,16 @@ export const NavBar = () => {
         <div className="hidden items-center gap-2 md:flex">
           <GlobalSearch />
 
-          <FeedbackModal />
+          <FeedbackModal>
+            <Button
+              isIconOnly
+              aria-label="Give feedback"
+              className={'cursor-pointer px-px transition-opacity hover:opacity-80'}
+              variant="ghost"
+            >
+              <FaComment />
+            </Button>
+          </FeedbackModal>
           <a
             className="text-foreground"
             href={siteConfig.links.discord}
@@ -143,6 +153,13 @@ export const NavBar = () => {
             <FaRobot />
             <span className="ms-3">Discord Bot</span>
           </a>
+
+          <FeedbackModal>
+            <Modal.Trigger className="group text-foreground hover:bg-surface-secondary flex items-center rounded-lg p-2">
+              <FaComment />
+              <span className="ms-3">Give us feedback</span>
+            </Modal.Trigger>
+          </FeedbackModal>
 
           <a
             href="https://drive.fightcore.gg"
