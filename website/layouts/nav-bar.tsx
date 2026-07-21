@@ -4,6 +4,7 @@ import { useGlobalSearch } from '@/components/global-search/global-search-contex
 import { ThemeSwitch } from '@/components/theme-switch';
 import { characters } from '@/config/framedata/framedata';
 import { siteConfig } from '@/config/site';
+import { FeedbackModal } from '@/layouts/feedback-modal';
 import { VERSION_NUMBER } from '@/layouts/version-number';
 import { characterRoute } from '@/utilities/routes';
 import { Tooltip } from '@heroui/react';
@@ -75,6 +76,8 @@ export const NavBar = () => {
 
         <div className="hidden items-center gap-2 md:flex">
           <GlobalSearch />
+
+          <FeedbackModal />
           <a
             className="text-foreground"
             href={siteConfig.links.discord}
