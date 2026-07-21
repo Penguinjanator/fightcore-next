@@ -5,6 +5,14 @@ import NextHead from 'next/head';
 
 const patchNotes = [
   {
+    version: '2.0.4',
+    changes: [
+      "Fixed Mewtwo's back air cycling through all animations (Thank you Xin, BAIRD, and others that told me)",
+      "Fixed Mewtwo's neutral air stating it ends at frame 42 instead of 38 (Thanks Dez)",
+      'Added a feedback module in the navigation bar, feedback is sent to a private Discord with only me (Bort) in it.',
+    ],
+  },
+  {
     version: '2.0.3',
     changes: [
       'Optimize and fix some meta data to improve SEO and social media cards',
