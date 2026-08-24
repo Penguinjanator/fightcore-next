@@ -5,6 +5,12 @@ import NextHead from 'next/head';
 
 const patchNotes = [
   {
+    version: '2.0.5',
+    changes: [
+      'Fixed the hitlag for some moves being off by 1 frame due to rounding (Thank you to tekken7fanboy, keaton and Renzo for the report)',
+    ],
+  },
+  {
     version: '2.0.4',
     changes: [
       "Fixed Mewtwo's back air cycling through all animations (Thank you Xin, BAIRD, and others that told me)",
