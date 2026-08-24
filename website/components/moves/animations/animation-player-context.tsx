@@ -107,7 +107,9 @@ export const AnimationPlayerProvider = ({
   }, [apngUrl]);
 
   const handleSeek = useCallback(() => {
-    setIsPlaying(false);
+    if (isPlaying) {
+      setIsPlaying(false);
+    }
   }, []);
 
   useEffect(() => {
